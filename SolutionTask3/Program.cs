@@ -4,8 +4,20 @@ string? inputLine = Console.ReadLine();
 if (inputLine != null)
 {
     int inputNum = int.Parse(inputLine);
-    for (int i = - inputNum; i <= inputNum; i++) 
+    int i = 0;
+    //string outputString = "";
+    // for (int i = - inputNum; i < inputNum; i++) 
+    // {
+    //     outputString = outputString + i + ", ";
+    // }
+    // outputString = outputString + inputNum;
+    // Console.WriteLine(outputString);
+
+    string outputString = "0";
+    while (i <= inputNum)
     {
-        Console.WriteLine(i);
+        outputString = -i + ", " + outputString + ", " + i;
+        i++;
     }
+    Console.WriteLine(outputString);
 }
