@@ -7,7 +7,16 @@ if (inputOne != null && inputTwo != null)
     int numOne = int.Parse(inputOne);   
     int numTwo = int.Parse(inputTwo);  
 
-    if (numOne == (int)Math.Pow(numTwo, 2)) 
+    // if (numOne == (int)Math.Pow(numTwo, 2)) 
+    // {
+    //     Console.WriteLine("Yes");
+    // } 
+    // else 
+    // {
+    //     Console.WriteLine("No");
+    // }
+
+    if (Math.Sqrt(numOne) == numTwo) 
     {
         Console.WriteLine("Yes");
     } 
