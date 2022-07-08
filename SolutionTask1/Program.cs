@@ -1,6 +1,6 @@
 ﻿Console.WriteLine("Введите два числа:");
-string inputOne = Console.ReadLine();
-string inputTwo = Console.ReadLine();
+string? inputOne = Console.ReadLine();
+string? inputTwo = Console.ReadLine();
 
 if (inputOne != null && inputTwo != null)
 {
