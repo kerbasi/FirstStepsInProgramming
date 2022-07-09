@@ -4,14 +4,21 @@ string? inputTwo = Console.ReadLine();
 
 if (inputOne != null && inputTwo != null)
 {
-    int numOne = int.Parse(inputOne);
-    int numTwo = int.Parse(inputTwo);
-    Console.Write("Max = ");
-    if(numOne > numTwo) 
+    try {
+        Console.WriteLine("Max = " + (int.Parse(inputOne) > int.Parse(inputTwo) ? int.Parse(inputOne) : int.Parse(inputTwo)));
+        // if(numOne > numTwo) 
+        // {
+        //     Console.Write(numOne);
+        // }
+        // else {
+        //     Console.Write(numTwo);
+        // }
+
+    }
+    catch(Exception e)
     {
-        Console.Write(numOne);
+        Console.WriteLine("Возникло исключение: " + e.Message);
+        Console.WriteLine("Попробуйте запустить программу еще раз");
     }
-    else {
-        Console.Write(numTwo);
-    }
+
 }
