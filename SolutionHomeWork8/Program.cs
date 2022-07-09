@@ -1,24 +1,41 @@
-﻿Console.Write("Введите номер : ");
+﻿//-------------------------------- Решение задачи 8 ------------------------------------------------------
+//Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+//--------------------------------------------------------------------------------------------------------
+Console.Write("Введите номер : ");
+//Считываем данные с консоли
 string? inputLine = Console.ReadLine();
-
+//Проверяем, чтобы данные были не пустыми
 if (inputLine != null)
 {
-    int inputNum = int.Parse(inputLine);
-    if (inputNum > 2) {
-        string outputString = "2";
+    try
+    {
+        //Парсим введенное число
+        int inputNum = int.Parse(inputLine);
+        //Проверяем что введенное число больше 2
+        if (inputNum > 2) {
+            //Начальное число в ответе задаем равным 2
+            string outputString = "2";
 
-        //int counter = 4;
-        // while(counter <= inputNum)
-        // {
-        //     outputString = outputString + ", " + counter;
-        //     counter += 2;
-        // }
-
-        for (int i = 4; i <= inputNum; i += 2) 
-        {
-            outputString = outputString + ", " + i;
+            //int counter = 4;
+            // while(counter <= inputNum)
+            // {
+            //     outputString = outputString + ", " + counter;
+            //     counter += 2;
+            // }
+            //Запускаем цикл на заполнение строки для ответа начиная с 4 с шагом 2, до тех пор пока не дойдем до заданного числа
+            for (int i = 4; i <= inputNum; i += 2) 
+            {
+                //формируем строку для ответа путем добавления к строке точки с запятой, пробела и итератора
+                outputString = outputString + ", " + i;
+            }
+            //Выводим итоговую строку в консоль
+            Console.WriteLine(outputString);
         }
-
-        Console.WriteLine(outputString);
     }
+    catch(Exception e)
+    {
+        // Выводим сообщение об ошибке
+        Console.WriteLine("Возникло исключение: " + e.Message);
+        Console.WriteLine("Попробуйте запустить программу еще раз.");           
+    }        
 }
