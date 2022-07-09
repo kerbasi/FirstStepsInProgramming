@@ -4,7 +4,7 @@ string? inputLine = Console.ReadLine();
 if (inputLine != null)
 {
     int inputNum = int.Parse(inputLine);
-    int i = 0;
+    int i = 1;
     //string outputString = "";
     // for (int i = - inputNum; i < inputNum; i++) 
     // {
