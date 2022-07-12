@@ -1,18 +1,20 @@
-﻿Console.WriteLine("Введите два числа:");
-
+﻿Console.WriteLine("Введите перове число:");
 string? inputOne = Console.ReadLine();
+
+Console.WriteLine("Введите второе число:");
 string? inputTwo = Console.ReadLine();
 
-if (inputOne != null && inputTwo != null)
+try
 {
     int numOne = int.Parse(inputOne);   
+
     int numTwo = int.Parse(inputTwo);  
 
-    if (Math.Sqrt(numOne) == numTwo) 
+    if (Math.Pow(numOne, 2) == numTwo) 
     {
         Console.WriteLine("Yes");
     } 
-    else if (Math.Sqrt(numTwo) == numOne) 
+    else if (Math.Pow(numTwo, 2) == numOne) 
     {
         Console.WriteLine("Yes");   
     }
@@ -20,4 +22,8 @@ if (inputOne != null && inputTwo != null)
     {
         Console.WriteLine("No");
     }
+}
+catch(Exception e)
+{
+    Console.WriteLine("Возникло исключение: " + e.Message);
 }

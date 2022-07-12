@@ -4,24 +4,20 @@ string? inputOne = Console.ReadLine();
 
 string reminderSearcher(string str)
 {
-    if (inputOne != null)
-    {
-        try {
-            string answer;
-            int num = int.Parse(str);
-            if (((num % 7) == 0) && ((num % 23) == 0)){
-                answer = "It's multiple for 7 and 23";
-            } else {
-                answer = "It's not multiple for 7 and 23";
-            }
-            return answer;
+    try {
+        string answer;
+        int num = int.Parse(str);
+        if (((num % 7) == 0) && ((num % 23) == 0)){
+            answer = "It's multiple for 7 and 23";
+        } else {
+            answer = "It's not multiple for 7 and 23";
         }
-        catch(Exception e)
-        {
-            return "Возникло исключение: " + e.Message;
-        }
+        return answer;
     }
-    return "";
+    catch(Exception e)
+    {
+        return "Возникло исключение: " + e.Message;
+    }
 }
 
 Console.WriteLine(reminderSearcher(inputOne));
