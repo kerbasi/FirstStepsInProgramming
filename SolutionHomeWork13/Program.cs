@@ -48,6 +48,7 @@ int thirdDigitDiv(int num){
 }
 
 int thirdDigitIf(int num){
+    //идем по веткам, как при бинарном поиске
     int digitsNum;
     //7 
     if(num >= 1000000) {
