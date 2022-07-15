@@ -4,7 +4,7 @@ Console.WriteLine("Input two numbers: ");
 string? inputOne = Console.ReadLine();
 string? inputTwo = Console.ReadLine();
 
-string reminderSearcher(string str1, string str2)
+string reminderSearcher(string? str1, string? str2)
 {
     try {
         string answer;
