@@ -3,7 +3,7 @@ string? inputLine = Console.ReadLine();
 int inputNum = int.Parse(inputLine);
 
 Console.WriteLine(sumNums(inputNum));
-Console.WriteLine(sumNums2(inputNum));
+//Console.WriteLine(sumNums2(inputNum));
 
 int sumNums(int num)
 {
@@ -11,6 +11,7 @@ int sumNums(int num)
     for (int i = 1; i <= inputNum; i++)
     {
         sum += i;
+        Console.WriteLine(sum);
     }
     return sum;
 }
