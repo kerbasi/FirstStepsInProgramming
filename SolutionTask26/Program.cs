@@ -4,9 +4,6 @@ string inputLineNum = Console.ReadLine() ?? "";
 int inputNum = int.Parse(inputLineNum);
 Stopwatch timer1 = new Stopwatch();
 
-// 
-// 
-
 int charMethod()
 {
     return inputLineNum.ToCharArray().Length;
