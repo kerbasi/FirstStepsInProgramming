@@ -8,7 +8,7 @@ int number1 = 0;
 int number2 = 0;
 float result = 0;
 
-Console.WriteLine("Формат данных : Число1 Оператор( + , - , / , ^ ) Число2");
+Console.WriteLine("Формат данных : Число1 Оператор( + , - , / , * , ^ ) Число2");
 Console.Write("Введите данные для расчета: ");
 //Считываем данные с консоли (Формат: число1 оператор число2)
 string? inputLine = Console.ReadLine();
@@ -36,6 +36,12 @@ try
         method = "/";
         div();
     }
+    //При наличии * вызываем метод умножения
+    else if (inputLine.IndexOf("*") != -1)
+    {
+        method = "*";
+        mul();
+    }    
     //При наличии ^ вызываем метод возведения в степень
     else if (inputLine.IndexOf("^") != -1)
     {
@@ -76,6 +82,11 @@ void diff(){
 void div(){
     parseNums();
     result = (float)number1 / (float)number2;
+}
+//Метод для умножения
+void mul(){
+    parseNums();
+    result = number1 * number2;
 }
 //Метод для возведения в степень
 void pow(){
