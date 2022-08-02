@@ -16,7 +16,7 @@ int simpleMethod()
 {
     int numberLength = 0;
     int digits = 1;
-    while(digits < inputNum)
+    while(digits <= inputNum)
     {
         digits = digits*10;
         numberLength++;

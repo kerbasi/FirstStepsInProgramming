@@ -1,21 +1,21 @@
-﻿Console.Write("Введите число: ");
+﻿using System.Numerics;
+Console.Write("Введите число: ");
 string? inputLine = Console.ReadLine();
-int inputNum = int.Parse(inputLine);
+long inputNum = long.Parse(inputLine);
 
 Console.WriteLine(sumNums(inputNum));
-//Console.WriteLine(sumNums2(inputNum));
+Console.WriteLine(sumNums2(inputNum));
 
-int sumNums(int num)
+long sumNums(long num)
 {
-    int sum = 0;
-    for (int i = 1; i <= inputNum; i++)
+    long sum = 0;
+    for (long i = 1; i <= inputNum; i++)
     {
         sum += i;
-        Console.WriteLine(sum);
     }
     return sum;
 }
 
-int sumNums2(int num) {
+long sumNums2(long num) {
     return ((num + 1) * num ) / 2;
 }
