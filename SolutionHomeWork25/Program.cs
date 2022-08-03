@@ -11,7 +11,7 @@ float result = 0;
 Console.WriteLine("Формат данных : Число1 Оператор( + , - , / , * , ^ ) Число2");
 Console.Write("Введите данные для расчета: ");
 //Считываем данные с консоли (Формат: число1 оператор число2)
-string? inputLine = Console.ReadLine();
+string? inputLine = Console.ReadLine() ?? "";
 
 try
 {
