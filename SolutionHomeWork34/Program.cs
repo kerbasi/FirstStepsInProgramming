@@ -1,17 +1,25 @@
 ﻿//Create a random generator varible
 System.Random numberSintezator = new Random();
-
-//Create an array of 20 positive 3-digits numbers    
-int[] array = getArray(20);
-Console.Write("Генерируем массив: ");
-//Call the printing Method
-printArray(array);
-//Call the sorting Method
-bubbleSort(array);
-Console.Write("Сортируем массив: ");
-//Call the printing Method
-printArray(array);
-Console.WriteLine("Количество четных чисел: " + evenCounter(array));
+try
+{
+    //Create an array of 20 positive 3-digits numbers    
+    int[] array = getArray(20);
+    Console.Write("Генерируем массив: ");
+    //Call the printing Method
+    printArray(array);
+    //Call the sorting Method
+    bubbleSort(array);
+    Console.Write("Сортируем массив: ");
+    //Call the printing Methodo
+    printArray(array);
+    Console.WriteLine("Количество четных чисел: " + evenCounter(array));
+}
+catch (Exception e)
+{
+    //Print error mesage
+    Console.WriteLine("Возникло исключение: " + e.Message);
+    Console.WriteLine("Попробуйте запустить программу еще раз.");
+}
 
 //Generates an array
 int[] getArray(int num)
