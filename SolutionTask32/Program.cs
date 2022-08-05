@@ -1,8 +1,8 @@
 ﻿System.Random numberSintezator = new Random();
 
 int[] array = getArray(12);
-Console.WriteLine("Сумма положительных элементов: " + calcPositive(array, true));
-Console.WriteLine("Сумма отрицательных элементов: " + calcPositive(array, false));
+printArray(array);
+printArray(reverseArray(array));
 
 int[] getArray(int num)
 {
@@ -19,11 +19,23 @@ int[] getArray(int num)
     return array;
 }
 
-int reverseArray(int[] array) {
+void printArray(int[] array)
+{
     int i = 0;
-    while (i < array.Length) {
-        array[i] = * (-1);
+    while (i < array.Length)
+    {
+        Console.Write(array[i] + " ");
         i++;
     }
-    return array;
+    Console.WriteLine();
+}
+
+int[] reverseArray(int[] array) {
+    int[] newArray = new int[array.Length];
+    int i = 0;
+    while (i < array.Length) {
+        newArray[i] = array[i] * (-1);
+        i++;
+    }
+    return newArray;
 }
