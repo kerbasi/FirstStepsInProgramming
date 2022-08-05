@@ -9,7 +9,7 @@ int[] getArray(int num)
     int[] array = new int[num];
     int i = 0;
     Console.Write("Сгенерирован массив: ");
-    while(i < array.Length - 1)
+    while(i < array.Length)
     {
         array[i] = numberSintezator.Next(-9, 10);
         Console.Write(array[i] + " "); // для проверки
