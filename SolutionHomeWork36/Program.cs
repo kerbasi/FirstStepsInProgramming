@@ -1,11 +1,16 @@
-﻿//Create a random generator varible
+﻿//----------------------------------------------------------------------------
+//Задайте одномерный массив, заполненный случайными числами. Найдите сумму
+//элементов, стоящих на нечётных позициях.
+//* Найдите все пары в массиве и выведите пользователю
+//----------------------------------------------------------------------------
+//Create a random generator varible
 System.Random numberSintezator = new Random();
 
 try
 {
     //Create an array of 20 numbers 
-    int[] array = getArray(20);
-    Console.Write("Генерируем массив: ");
+    int[] array = getArray(100);
+    Console.WriteLine("Генерируем массив из 100 случайных чисел от -99 до 100: ");
     //Call the printing Method
     printArray(array);
     Console.WriteLine("Сумма всех элементов на нечетных позициях: " + oddPositionCounter(array));
@@ -24,11 +29,13 @@ int[] getArray(int num)
 {
     //Create an array with given numbers of elements
     int[] array = new int[num];
+    //Create an index variable
     int i = 0;
+    //Run through all elements
     while (i < array.Length)
     {
         //Fill array with random numgers from -9 to 9
-        array[i] = numberSintezator.Next(-9, 10);
+        array[i] = numberSintezator.Next(-99, 100);
         i++;
     }
     //Return filled array
@@ -38,11 +45,13 @@ int[] getArray(int num)
 //Prints an array
 void printArray(int[] array)
 {
+    //Create an index variable
     int i = 0;
     Console.Write("[");
+    //Run through all elements
     while (i < array.Length - 1)
     {
-        Console.Write(array[i] + ", ");
+        Console.Write(array[i] + ",");
         i++;
     }
     Console.WriteLine(array[i] + "]");
@@ -63,7 +72,7 @@ int oddPositionCounter(int[] array)
 void duplicateSearcher(int[] array)
 {
     //Create a dictonary for duplicates 
-    Dictionary<int, List<int>> duplicate = new Dictionary<int, List<int>>();
+    SortedDictionary<int, List<int>> duplicate = new SortedDictionary<int, List<int>>();
     //Loop
     for (int i = 0; i < array.Length - 1; i++)
     {
@@ -97,7 +106,9 @@ void duplicateSearcher(int[] array)
     else
     {
         //Print if there are duplicates
-        Console.Write("В массиве найдены следующие парные элементы:");
+        Console.WriteLine("В массиве найдены следующие парные элементы:");
+        //Create a variable for new line starting after 3 prints
+        int outCount = 0;
         foreach (var num in duplicate)
         {
             //Loop through dic and print
@@ -107,6 +118,12 @@ void duplicateSearcher(int[] array)
                 Console.Write("[" + i + "]");
             }
             Console.Write(";");
+            outCount++;
+            if (outCount >= 3)
+            {
+                Console.WriteLine();
+                outCount = 0;
+            }
         }
     }
 }

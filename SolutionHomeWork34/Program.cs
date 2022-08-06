@@ -1,18 +1,24 @@
-﻿//Create a random generator varible
+﻿//----------------------------------------------------------------------------
+//Задайте массив заполненный случайными положительными трёхзначными числами.
+//Напишите программу, которая покажет количество чётных чисел в массиве
+//* Отсортировать массив методом пузырька
+//----------------------------------------------------------------------------
+
+//Create a random generator varible
 System.Random numberSintezator = new Random();
 try
 {
     //Create an array of 20 positive 3-digits numbers    
     int[] array = getArray(20);
-    Console.Write("Генерируем массив: ");
+    Console.WriteLine("Генерируем массив из 20 положительных трёхзначных чисел: ");
     //Call the printing Method
     printArray(array);
     //Call the sorting Method
     bubbleSort(array);
-    Console.Write("Сортируем массив: ");
+    Console.WriteLine("Сортируем массив методо пузырька: ");
     //Call the printing Methodo
     printArray(array);
-    Console.WriteLine("Количество четных чисел: " + evenCounter(array));
+    Console.WriteLine("Количество четных чисел в массиве: " + evenCounter(array));
 }
 catch (Exception e)
 {
