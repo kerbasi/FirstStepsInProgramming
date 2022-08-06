@@ -1,21 +1,44 @@
-﻿//Create a random generator varible
+﻿using System.Diagnostics;
+//Create a random generator varible
 System.Random numberSintezator = new Random();
+
+//Создаем новый таймер
+Stopwatch timer1 = new Stopwatch();
 
 try
 {
     //Create an array of 20 numbers 
-    float[] array = getArray(20);
-    Console.Write("Генерируем массив: ");
+    float[] array = getArrayFloat(20);
+    Console.WriteLine("Генерируем массив float значений: ");
     //Call the printing Method
-    printArray(array);
+    printArrayFloat(array);
     Console.Write("Разница между макисмальным и минимальным элементом: ");
     Console.WriteLine(diffCalc(array));
-    insertionSort(array);
-    Console.Write("Сортируем массив методом вставки: ");
-    printArray(array);
-    Console.Write("Разница между макисмальным и минимальным элементом после сортировки путем вычиания крайних элементов: "); 
-    Console.Write(array[array.Length - 1] - array[0]);
+    // insertionSortFloat(array);
+    // Console.Write("Сортируем массив методом вставки: ");
+    // printArrayFloat(array);
+    // Console.Write("Разница между макисмальным и минимальным элементом после сортировки путем вычиания крайних элементов: "); 
+    // Console.Write(array[array.Length - 1] - array[0]);
+    Console.WriteLine("Проверка Производительности сортировки");
+    Console.WriteLine("Генерируем массив int значений : ");
+    
+    int[] arrayInt = getArrayInt(20000);
+    //Call the printing Method
+    printArrayInt(arrayInt);
 
+    Console.WriteLine("Сортируем массив методом вставки: ");
+    timer1.Start();
+    printArrayInt(insertionSortInt(arrayInt));
+    timer1.Stop();
+    Console.Write("Выполнение алгоритма заняло: ");
+    Console.WriteLine(timer1.Elapsed);    
+
+    Console.WriteLine("Сортируем массив методом подсчета: ");
+    timer1.Start();
+    printArrayInt(calculatonSortInt(arrayInt, 0, 1000));
+    timer1.Stop();
+    Console.Write("Выполнение алгоритма заняло: ");
+    Console.WriteLine(timer1.Elapsed);    
 }
 catch (Exception e)
 {
@@ -25,7 +48,20 @@ catch (Exception e)
 }
 
 //Prints an array
-void printArray(float[] array)
+void printArrayFloat(float[] array)
+{
+    int i = 0;
+    Console.Write("[");
+    while (i < array.Length - 1)
+    {
+        Console.Write(array[i] + ", ");
+        i++;
+    }
+    Console.WriteLine(array[i] + "]");
+}
+
+//Prints an array
+void printArrayInt(int[] array)
 {
     int i = 0;
     Console.Write("[");
@@ -38,7 +74,7 @@ void printArray(float[] array)
 }
 
 //Generates an array
-float[] getArray(int num)
+float[] getArrayFloat(int num)
 {
     //Create an array with given numbers of elements
     float[] array = new float[num];
@@ -53,8 +89,23 @@ float[] getArray(int num)
     return array;
 }
 
+//Generates an array
+int[] getArrayInt(int num)
+{
+    //Create an array with given numbers of elements
+    int[] array = new int[num];
+    int i = 0;
+    while (i < array.Length)
+    {
+        //Fill array with random numgers from 100 to 999
+        array[i] = numberSintezator.Next(0, 1000);
+        i++;
+    }
+    //Return filled array
+    return array;
+}
+
 float diffCalc(float[] array){
-    float diff = 0;
     float min = array[0];
     float max = array[0];
     for (int i = 0; i < array.Length; i++)
@@ -65,17 +116,60 @@ float diffCalc(float[] array){
     return max - min;
 }
 
-void insertionSort(float[] array) {
-    for (int i = 1; i < array.Length; i++)
+// void insertionSortFloat(float[] array) {
+//     for (int i = 1; i < array.Length; i++)
+//     {
+//         int j = i;
+//         while(j > 0) {
+//             if(array[j] < array[j - 1]){
+//                 float tmp = array[j];
+//                 array[j] = array[j - 1];
+//                 array[j - 1] = tmp;
+//             }
+//             j--;
+//         }
+//     }
+// }
+
+int[] insertionSortInt(int[] array) {
+    int[] newArray = new int[array.Length];
+    array.CopyTo(newArray, 0);
+    for (int i = 1; i < newArray.Length; i++)
     {
         int j = i;
         while(j > 0) {
-            if(array[j] < array[j - 1]){
-                float tmp = array[j];
-                array[j] = array[j - 1];
-                array[j - 1] = tmp;
+            if(newArray[j] < newArray[j - 1]){
+                int tmp = newArray[j];
+                newArray[j] = newArray[j - 1];
+                newArray[j - 1] = tmp;
             }
             j--;
         }
     }
+    return newArray;
+}
+
+int[] calculatonSortInt(int[] array, int min, int max){
+    int[] newArray = new int[array.Length];
+    array.CopyTo(newArray, 0);
+    int range = max - min;
+    int[] tmpArray = new int[range];
+    for (int i = 0; i < tmpArray.Length; i++)
+    {
+        tmpArray[i] = 0;
+    }   
+    for (int i = 0; i < newArray.Length; i++)
+    {
+        tmpArray[newArray[i]]++;
+    }
+    int j = 0;
+    for (int i = 0; i < tmpArray.Length; i++)
+    {
+        while(tmpArray[i] > 0){
+            newArray[j] = i;
+            tmpArray[i]--;
+            j++;
+        }
+    }
+    return newArray;
 }
