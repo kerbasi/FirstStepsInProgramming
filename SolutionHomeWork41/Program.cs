@@ -4,11 +4,10 @@
 //----------------------------------------------------------------------------
 try
 {
-    //Ask user for a number
-    Console.Write("Введите количество обрабатываемых нажатий: ");
-    int decemalNumber = int.Parse(Console.ReadLine() ?? "");
+    //Call reading number Method
+    int decemalNumber = ReadNumber();
     //Call positive numbers pressed calculating Method 
-    int answer = positiveNumbersPressed(decemalNumber);
+    int answer = PositiveNumbersPressed(decemalNumber);
     //Call printing Method
     PrintAnswer(answer);
 }
@@ -19,8 +18,16 @@ catch (Exception e)
     Console.WriteLine("Попробуйте запустить программу еще раз.");
 }
 
+//Asks user for a number
+int ReadNumber(){
+    //Ask user for a number
+    Console.Write("Введите количество обрабатываемых нажатий: ");  
+    //Parse given string to number and return it 
+    return int.Parse(Console.ReadLine() ?? "");
+}
+
 //Gets key pressed by user and calculets how amny positive numbers given
-int positiveNumbersPressed(int length)
+int PositiveNumbersPressed(int length)
 {
     //Create a ConsoleKeyInfo variable
     ConsoleKeyInfo keyLog;
