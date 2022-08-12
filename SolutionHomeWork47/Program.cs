@@ -1,17 +1,30 @@
-﻿System.Random numberSintezator = new Random();
-
-double[,] array = get2DArray(10, 15);
-PrintArray(array);
-
-
-double[,] get2DArray(int cols, int rows)
+﻿//Create a random generator varible
+System.Random numberSintezator = new Random();
+try 
 {
-    double[,] array = new double[cols, rows];
+    //Call array generating Method and save it to a new variable
+    double[,] array = get2DArray(4, 6);
+    //Call array printing Method
+    PrintArray(array);
+}
+catch (Exception e)
+{
+    //Print error mesage
+    Console.WriteLine("Возникло исключение: " + e.Message);
+    Console.WriteLine("Попробуйте запустить программу еще раз.");
+}
 
-    for (int i = 0; i < cols; i++)
+double[,] get2DArray(int rows, int cols)
+{
+    //Create a double array variable
+    double[,] array = new double[rows, cols];
+    //Run thorugh all array's elements
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < rows; j++)
+        for (int j = 0; j < cols; j++)
         {
+            //Generate a rundom double number, round it for 4 decemal digits
+            //and save it to current array's element
             array[i, j] = Math.Round(numberSintezator.NextDouble()*100, 4);
         }
     }
@@ -21,16 +34,24 @@ double[,] get2DArray(int cols, int rows)
 void PrintArray(double[,] array)
 {
     Console.Clear();
+    //Create an array variavle witch contains all colors for console
     ConsoleColor[] colors = (ConsoleColor[]) ConsoleColor.GetValues(typeof(ConsoleColor));
-    int cols = array.GetLength(0);
-    int rows = array.GetLength(1);
-    for (int i = 0; i < cols; i++)
+    //Create a vaiable for row numbers
+    int rows = array.GetLength(0);
+    //Create a vaiable for columns numbers
+    int cols = array.GetLength(1);
+    Console.WriteLine("Сгенерирован массив вещественных чисел: ");
+    //Run thorugh all array's elements
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < rows; j++)
+        for (int j = 0; j < cols; j++)
         {
-             Console.ForegroundColor = colors[numberSintezator.Next(0,16)];
+            //Set color for the console with a random choise form array of colors
+            Console.ForegroundColor = colors[numberSintezator.Next(1,16)];
+            //Print current array's element
             Console.Write(array[i, j] + "\t");
         }
+        //Move line when row ends
         Console.WriteLine();
     }
     Console.ResetColor();
