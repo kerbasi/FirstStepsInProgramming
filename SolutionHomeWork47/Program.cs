@@ -1,9 +1,18 @@
-﻿//Create a random generator varible
+﻿//-----------------------------------------------------------------------------------
+//Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+//* При выводе матрицы показывать каждую цифру разного цвета(цветов всего 16)
+//-----------------------------------------------------------------------------------
+//Create a random generator varible
 System.Random numberSintezator = new Random();
+
+//Create constant variables for array size
+const int ARRAY_COLS = 8;
+const int ARRAY_ROWS = 10;
+
 try 
 {
     //Call array generating Method and save it to a new variable
-    double[,] array = get2DArray(4, 6);
+    double[,] array = get2DArray(ARRAY_ROWS, ARRAY_COLS);
     //Call array printing Method
     PrintArray(array);
 }
@@ -47,6 +56,7 @@ void PrintArray(double[,] array)
         for (int j = 0; j < cols; j++)
         {
             //Set color for the console with a random choise form array of colors
+            //except black
             Console.ForegroundColor = colors[numberSintezator.Next(1,16)];
             //Print current array's element
             Console.Write(array[i, j] + "\t");
