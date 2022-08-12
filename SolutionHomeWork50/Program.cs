@@ -7,8 +7,9 @@
 System.Random numberSintezator = new Random();
 
 //Create constant variables for array size
-const int ARRAY_COLS = 5;
 const int ARRAY_ROWS = 6;
+const int ARRAY_COLS = 5;
+
 
 try
 {
@@ -16,14 +17,14 @@ try
     int[] indexesForSearch = ReadArrayIndexes();
 
     //Check user input data
-    if (indexesForSearch[0] > ARRAY_COLS && indexesForSearch[1] > ARRAY_ROWS)
+    if (indexesForSearch[0] > ARRAY_ROWS - 1 || indexesForSearch[1] > ARRAY_COLS - 1)
     {
         Console.WriteLine("Введенный диапозон больше размера массива");
     }
     else
     {
         //Call array generating Method and save it to a new variable
-        int[,] array = Get2DArray(ARRAY_COLS, ARRAY_ROWS);
+        int[,] array = Get2DArray(ARRAY_ROWS, ARRAY_COLS);
         //Call array prining Method
         PrintArray(array, indexesForSearch);
     }
@@ -36,18 +37,18 @@ catch (Exception e)
 }
 
 //Generates a 2D integer array 
-int[,] Get2DArray(int cols, int rows)
+int[,] Get2DArray(int rows, int cols)
 {
     //Create an int array variable
-    int[,] array = new int[cols, rows];
+    int[,] array = new int[rows, cols];
     //Run thorugh all array's elements
-    for (int i = 0; i < cols; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < rows; j++)
+        for (int j = 0; j < cols; j++)
         {
             //Call Fibanachi number finding Method for current index 
             //and save it to current elemetn
-            array[i, j] = GetFibonnaciNumber((i * rows) + j);
+            array[i, j] = GetFibonnaciNumber((i * cols) + j);
         }
     }
     return array;
@@ -58,15 +59,15 @@ void PrintArray(int[,] array, int[] givenIndexes)
 {
     //Create a color variable
     ConsoleColor color = ConsoleColor.Red;
-    //Create a vaiable for row numbers
-    int cols = array.GetLength(0);
     //Create a vaiable for columns numbers
-    int rows = array.GetLength(1);
+    int rows = array.GetLength(0);
+    //Create a vaiable for row numbers
+    int cols = array.GetLength(1);
     //Run thorugh all array's elements
     Console.WriteLine("Сгенерирован массив числе из ряда Фибонначи (искомый индекс выделен): ");
-    for (int i = 0; i < cols; i++)
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 0; j < rows; j++)
+        for (int j = 0; j < cols; j++)
         {
             //Check for the searching element
             if (i == givenIndexes[0] && j == givenIndexes[1])
@@ -112,9 +113,9 @@ int[] ReadArrayIndexes()
 {
     //Create an array for 2 indexes
     int[] indexes = new int[2];
-    Console.WriteLine("Введите индексы искомого элемента");
+    Console.WriteLine("Введите индексы искомого элемента (индексация начинается с 0)");
     Console.Write($"Формат ввода: сторка-столбец без разделения ");
-    Console.Write($"индесов одним числом в диапазоне [0-{ARRAY_COLS - 1},0-{ARRAY_ROWS - 1}]: ");
+    Console.Write($"индесов одним числом в диапазоне [0-{ARRAY_ROWS - 1},0-{ARRAY_COLS - 1}]: ");
     int indexesNumber = int.Parse(Console.ReadLine() ?? "");
     //Calculate indexes form input
     indexes[0] = indexesNumber / 10;

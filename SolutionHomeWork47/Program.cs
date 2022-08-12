@@ -6,13 +6,13 @@
 System.Random numberSintezator = new Random();
 
 //Create constant variables for array size
-const int ARRAY_COLS = 8;
 const int ARRAY_ROWS = 10;
+const int ARRAY_COLS = 8;
 
 try 
 {
     //Call array generating Method and save it to a new variable
-    double[,] array = get2DArray(ARRAY_ROWS, ARRAY_COLS);
+    double[,] array = Get2DArray(ARRAY_ROWS, ARRAY_COLS);
     //Call array printing Method
     PrintArray(array);
 }
@@ -23,7 +23,7 @@ catch (Exception e)
     Console.WriteLine("Попробуйте запустить программу еще раз.");
 }
 
-double[,] get2DArray(int rows, int cols)
+double[,] Get2DArray(int rows, int cols)
 {
     //Create a double array variable
     double[,] array = new double[rows, cols];
