@@ -80,25 +80,33 @@ double[] GetColumnsAverageStraight(int[,] array)
     return avarageArray;
 }
 
-// double GetDiagonalFromLeftAverage(int[,] array, int rowNumber)
-// {
-//     double avarage = 0;
-//     int rows = array.GetLength(1);
-//     for (int i = rowNumber; i < rows; i++)
-//     {
-//         avarage += array[columnNumber, i];
-//     }
-//     return avarage / rows;
-// }
+double GetDiagonalFromLeftAverage(int[,] array, int rowNumber)
+{
+    double avarage = 0;
+    int rows = array.GetLength(0);
+    int j = 0;
+    for (int i = rowNumber; i < rows; i++)
+    {
+        avarage += array[i, j];
+        j++;
+    }
+    return (avarage / (j + 1));
+}
 
 // double[] GetColumnsAverageDiagonal(int[,] array, bool directionRight)
 // {
+//     int rows = array.GetLength(0);
 //     int cols = array.GetLength(1);
-//     double[] avarageArray = new double[cols];
-//     for (int i = 0; i < cols; i++)
-//     {
-//         avarageArray[i] = Math.Round(GetColumnAverageDiagonal(array, i), 2);
+//     int i = 0;
+//     double[] avarageArray = new double[rows + cols - 2];
+
+//     while(rows >= 0) {
+//         avarageArray[i] = GetDiagonalFromLeftAverage(array, rows);
+//         rows -= 1;
 //     }
+
+//     while()
+
 //     return avarageArray;
 // }
 
