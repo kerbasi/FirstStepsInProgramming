@@ -16,8 +16,8 @@ const int array2Cols = 2;
 try
 {
     //Call arrays generating Method and save it to a new variable
-    int[,] array1 = getArray(array1Rows, array1Cols);
-    int[,] array2 = getArray(array2Rows, array2Cols);
+    int[,] array1 = GetArray(array1Rows, array1Cols);
+    int[,] array2 = GetArray(array2Rows, array2Cols);
     //Call array prining Method
     PrintArray(array1, "Сгенерирован массив A: ");
     PrintArray(array2, "Сгенерирован массив B: ");
@@ -40,7 +40,7 @@ catch (Exception e)
 }
 
 //Generates a 2D integer array 
-int[,] getArray(int cols, int rows)
+int[,] GetArray(int cols, int rows)
 {
     //Create an int array variable
     int[,] array = new int[cols, rows];

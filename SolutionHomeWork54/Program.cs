@@ -8,7 +8,7 @@ const int arrayCols = 8;
 try
 {
     //Call array generating Method and save it to a new variable
-    int[,] array = getArray(arrayRows, arrayCols);
+    int[,] array = GetArray(arrayRows, arrayCols);
     //Call array prining Method
     PrintArray(array, "Сгенерирован массив: ");
     //Call array rows sorting Method
@@ -24,7 +24,7 @@ catch (Exception e)
 }
 
 //Generates a 2D integer array 
-int[,] getArray(int cols, int rows)
+int[,] GetArray(int cols, int rows)
 {
     //Create an int array variable
     int[,] array = new int[cols, rows];

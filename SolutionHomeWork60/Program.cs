@@ -16,7 +16,7 @@ const int arrayDimnesion3 = 2;
 try
 {
     //Call array generating Method and save it to a new variable
-    int[,,] array = get3DArray(arrayDimnesion1, arrayDimnesion2, arrayDimnesion3);
+    int[,,] array = Get3DArray(arrayDimnesion1, arrayDimnesion2, arrayDimnesion3);
     // //Call array prining Method
     Print3DArray(array, "Сгенерирован трехмерный массив: ");
     // //Call array rows sorting Method
@@ -32,7 +32,7 @@ catch (Exception e)
 }
 
 //Generates a 2D integer array 
-int[,,] get3DArray(int dim1, int dim2, int dim3)
+int[,,] Get3DArray(int dim1, int dim2, int dim3)
 {
     //Create a list for writed values check 
     List<int> usedValues = new List<int>(8);
