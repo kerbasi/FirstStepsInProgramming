@@ -6,17 +6,28 @@
 Console.WriteLine("Введите число обозначающее размер квадратной матрицы, кторорая будет заполнена спирально");
 Console.Write("Либо просто нажмите Enter для заполнения матрицы размером 4 на 4: ");
 //Parse given string to number and return it
-string strningInput = Console.ReadLine() ?? "4";
-int n = int.Parse(strningInput == "" ? "4" : strningInput);
 //Create a variable for filling array
 int i = 1;
-//Creaate an array with given size
-int[,] array = new int[n, n];
-//Call array filling Method
-SpiralArrayFiller(array);
-//Call array printing Method
-Console.WriteLine();
-PrintArray(array);
+int n;
+try
+{
+    string strningInput = Console.ReadLine() ?? "4";
+    n = int.Parse(strningInput == "" ? "4" : strningInput);
+    //Creaate an array with given size
+    int[,] array = new int[n, n];
+    //Call array filling Method
+    SpiralArrayFiller(array);
+    //Call array printing Method
+    Console.WriteLine();
+    PrintArray(array);
+}
+catch (Exception e)
+{
+    //Print error mesage
+    Console.WriteLine("Возникло исключение: " + e.Message);
+    Console.WriteLine("Попробуйте запустить программу еще раз.");
+}
+
 
 //Fills row with given index, takes indexes from start to end and direction
 void FillRow(int[,] array, bool directionRight, int startIndex, int endIndex, int rowNumber)
@@ -135,7 +146,7 @@ void SpiralArrayFiller(int[,] array)
         //Cange row or column by opposite
         isRow = !isRow;
         //Decrease speps couter for intervar calculation
-        step--;     
+        step--;
     }
 }
 //Prints array
