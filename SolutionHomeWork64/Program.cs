@@ -5,8 +5,12 @@
 
 try
 {
+    //Ask user for a number
     int inputNumberM = ReadNumber("Введите число M: ");
     int inputNumberN = ReadNumber("Введите число N: ");
+    //Check input nums for bigger and swap them if fist bigger
+    if ( inputNumberM > inputNumberN) (inputNumberM, inputNumberN) = (inputNumberN, inputNumberM);
+    //Call printing function
     PrintNumbers(inputNumberM, inputNumberN);
 }
 catch (Exception e)
@@ -18,7 +22,7 @@ catch (Exception e)
 
 
 
-
+//Print numbers form given range
 void PrintNumbers(int numM, int numN)
 {
     if (numM != numN)
@@ -32,7 +36,7 @@ void PrintNumbers(int numM, int numN)
     }
 }
 
-
+//Parses user input to number and returns it
 int ReadNumber(string text)
 {
     Console.Write(text);
